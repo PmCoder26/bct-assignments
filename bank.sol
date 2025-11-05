@@ -88,6 +88,13 @@ contract Bank {
         }
 
         return list;
-    }    
+    }  
+
+    event Log(string message, uint value);
+
+        // Handles calls to non-existent functions or Ether with data
+    fallback() external payable {
+        emit Log("Fallback triggered", msg.value);
+    }
 
 }
